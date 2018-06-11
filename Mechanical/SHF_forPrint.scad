@@ -22,7 +22,7 @@ hexNutThickness = 2.5; //for countersunk hex nut
 //Do not change unless you know what you are doing!
 rad1 = (basicDiameter + 0.25) / 2;
 rad2 = postHeight / 2;
-keyHeight = rad1 * 10;
+keyHeight = rad1 * 5;
 earLength = rad2 * 4;
 earHeight = postHeight / 2; 
 wingtipA = rad2 + 0.1;
@@ -96,11 +96,11 @@ difference() {
     translate([0, -rad2 + hexNutCirRad/2, earHeight]) rotate([0, 90, 0]) {
       union() {
           //clamping bolt shaft slot
-          cube([clampingBoltDrillSlotRad,clampingBoltDrillSlotRad,earLength],center = true);
+          cube([clampingBoltDrillSlotRad * 2,clampingBoltDrillSlotRad, earLength], center = true);
           for(s = [0:1])
               mirror([0, s, 0])
-                translate ([0,clampingBoltDrillSlotRad/3,0]) 
-                  cylinder(d = clampingBoltDrillSlotRad, h = earLength, center = true, $fn = 20);
+                translate ([0, clampingBoltDrillSlotRad/3, 0]) 
+                  cylinder(r = clampingBoltDrillSlotRad, h = earLength, center = true, $fn = 20);
       }
       for (t = [0:1])
         mirror([0, 0, t]) {
